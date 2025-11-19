@@ -195,6 +195,20 @@ static void handle_before_execve(char **__user u_filename_p, char **__user uargv
     int flen = compat_strncpy_from_user(filename, ufilename, sizeof(filename));
     if (flen <= 0) return;
 
+
+
+//add
+if (!strcmp(SUPERCMD, filename)) {
+        void handle_supercmd(char **__user u_filename_p, char **__user uargv);
+        handle_supercmd(u_filename_p, uargv);
+        return;
+}
+//add
+
+
+
+
+
     if (!strcmp(current_su_path, filename)) {
         uid_t uid = current_uid();
         struct su_profile profile;
@@ -247,11 +261,7 @@ static void handle_before_execve(char **__user u_filename_p, char **__user uargv
             logkfi("call apd uid: %d, to_uid: %d, sctx: %s, cplen: %d, %d\n", uid, to_uid, sctx, cplen, argv_cplen);
         }
 #endif // ANDROID
-    } else if (!strcmp(SUPERCMD, filename)) {
-        void handle_supercmd(char **__user u_filename_p, char **__user uargv);
-        handle_supercmd(u_filename_p, uargv);
-        return;
-    }
+    } 
 }
 
 // https://elixir.bootlin.com/linux/v6.1/source/fs/exec.c#L2107
