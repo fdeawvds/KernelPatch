@@ -413,7 +413,7 @@ su_add_allow_uid(i, 0, all_allow_sctx);
     //rc = hook_compat_syscalln(11, 3, before_execve, 0, (void *)1);
     //log_boot("hook 32 __NR_execve rc: %d\n", rc);
      //221	0xdd	execve
-    rc = hook_compat_syscalln(221, 3, before_execve, 0, (void *)1);
+    rc = hook_syscalln(221, 3, before_execve, 0, (void *)1);
     log_boot("hook 32 __NR_execve rc: %d\n", rc);
 
     // __NR_fstatat64 327
