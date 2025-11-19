@@ -18,7 +18,7 @@ static inline long hash_key(const char *key)
 #define SUPERCALL_HELLO_ECHO "hello1158"
 
 // #define __NR_supercall __NR3264_truncate // 45
-#define __NR_supercall 45
+// #define __NR_supercall 45
 
 //0x33	chroot	__arm64_sys_chroot	fs/open.c:556
 
