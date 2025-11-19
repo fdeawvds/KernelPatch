@@ -20,6 +20,12 @@ static inline long hash_key(const char *key)
 // #define __NR_supercall __NR3264_truncate // 45
 #define __NR_supercall 45
 
+//0x33	chroot	__arm64_sys_chroot	fs/open.c:556
+
+#define __NR_supercall 51
+
+
+
 #define SUPERCALL_HELLO 0x1000
 #define SUPERCALL_KLOG 0x1004
 
@@ -94,7 +100,9 @@ struct su_profile
 
 #define SU_PATH_MAX_LEN 128
 
-#define SUPERCMD "/system/bin/truncate"
+// #define SUPERCMD "/system/bin/truncate"
+#define SUPERCMD "/system/bin/chroot"
+
 
 #define SAFE_MODE_FLAG_FILE "/dev/.safemode"
 
