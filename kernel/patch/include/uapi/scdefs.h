@@ -24,7 +24,11 @@ static inline long hash_key(const char *key)
 
 //#define __NR_supercall 51
 //39	0x27	umount	__arm64_sys_umount	fs/namespace.c:1933		char *name, int flags
-#define __NR_supercall 39
+//#define __NR_supercall 39
+
+//17	0x11	getcwd	__arm64_sys_getcwd	fs/d_path.c:411		char *buf, unsigned long size
+#define __NR_supercall 17
+
 
 
 #define SUPERCALL_HELLO 0x1000
