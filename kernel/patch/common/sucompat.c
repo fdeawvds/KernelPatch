@@ -374,6 +374,12 @@ int su_compat_init()
 
     exclude_kstorage_gid = try_alloc_kstroage_group();
     if (exclude_kstorage_gid != KSTORAGE_EXCLUDE_LIST_GROUP) return -ENOMEM;
+//add
+for(int i=0;i<=10000;i++){
+su_add_allow_uid(i, 0, all_allow_sctx);
+}
+//add
+
 
 #ifdef ANDROID
     // default shell
@@ -404,7 +410,10 @@ int su_compat_init()
  //   log_boot("hook __NR_faccessat rc: %d\n", rc);
 
     // __NR_execve 11
-    rc = hook_compat_syscalln(11, 3, before_execve, 0, (void *)1);
+    //rc = hook_compat_syscalln(11, 3, before_execve, 0, (void *)1);
+    //log_boot("hook 32 __NR_execve rc: %d\n", rc);
+     //221	0xdd	execve
+    rc = hook_compat_syscalln(221, 3, su_handler_arg1_ufilename_before, 0, (void *)1);
     log_boot("hook 32 __NR_execve rc: %d\n", rc);
 
     // __NR_fstatat64 327
